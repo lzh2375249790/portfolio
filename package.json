@@ -1,7 +1,7 @@
 ﻿{
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "AI-Assisted 个人作品集 - 展示全流程 AI 协作开发能力",
+  "description": "AI-Assisted 个人作品集 - https://portfolio.vercel.app",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8501",
@@ -29,4 +29,5 @@
     "jsdom": "^24.0.0"
   }
 }
+
 
