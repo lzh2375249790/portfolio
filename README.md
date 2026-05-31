@@ -1,6 +1,8 @@
 ﻿# 🚀 AI-Assisted Portfolio
 
 > 用 Codex AI 全程辅助搭建的个人作品集网站
+> 
+> **在线地址：** [portfolio.vercel.app](https://portfolio.vercel.app)
 
 ## ✨ 项目亮点
 
@@ -21,7 +23,7 @@
 - **样式**: Tailwind CSS 4
 - **测试**: Vitest + Testing Library
 - **AI 工具**: Codex AI (全流程辅助)
-- **部署**: Vercel (推荐)
+- **部署**: GitHub + Vercel
 
 ## 📁 项目结构
 
@@ -34,7 +36,7 @@ src/
 │   ├── projects/page.tsx # 项目列表
 │   ├── blog/
 │   │   ├── page.tsx     # 博客列表
-│   │   └── [slug]/page.tsx  # 博客详情
+│   │   └── [slug]/page.tsx  # 博客详情（AI 生成内容）
 │   └── globals.css      # 全局样式
 ├── components/
 │   ├── Navbar.tsx       # 导航栏
@@ -48,18 +50,44 @@ src/
 ## 🚀 快速开始
 
 ```bash
-# 安装依赖
+# 1. 安装依赖
 npm install
 
-# 启动开发服务器
+# 2. 启动开发服务器
 npm run dev
 
-# 运行测试
+# 3. 在浏览器打开
+open http://localhost:8501
+
+# 4. 运行测试
 npm run test
 
-# 构建
+# 5. 构建
 npm run build
 ```
+
+## 🌐 部署到生产
+
+### 推送代码到 GitHub
+
+```bash
+git push -u origin master
+```
+
+### 部署到 Vercel
+
+**方案 A：一键 CLI**
+```bash
+npx vercel --prod
+```
+
+**方案 B：Vercel Dashboard**
+1. 打开 [vercel.com/import](https://vercel.com/import)
+2. 选择 `lzh2375249790/portfolio`
+3. Framework 选择 **Next.js**
+4. 点击 **Deploy**
+
+或直接双击项目根目录的 `deploy.bat`。
 
 ## 📝 博客内容
 
