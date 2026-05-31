@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品集 | AI-Assisted Developer</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --accent: #7c3aed;
+  --surface: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --muted: #64748b;
+  --text: #f1f5f9;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--surface);color:var(--text);
+  min-height:100vh;line-height:1.6;
+}
+::selection{background:var(--primary);color:#fff}
+
+/* Nav */
+nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(20px);
+  background:rgba(15,23,42,.85);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:800px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  height:64px;padding:0 20px;
+}
+.logo{font-weight:700;font-size:1.125rem;text-decoration:none;color:var(--text)}
+.logo:hover{color:var(--primary)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s;
+  cursor:pointer;background:none;border:none;font-family:inherit;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+@media(max-width:640px){
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(15,23,42,.98);padding:16px 20px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+}
+
+/* Main */
+main{max-width:800px;margin:0 auto;padding:48px 20px 120px}
+
+/* Hero */
+.hero{text-align:center;padding:60px 0}
+.hero .label{color:var(--primary);font-family:monospace;font-size:.875rem;margin-bottom:16px}
+.hero h1{font-size:clamp(1.75rem,5vw,3rem);font-weight:800;line-height:1.2}
+.hero .gradient{
+  display:block;margin-top:8px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{color:var(--muted);max-width:600px;margin:20px auto 32px;font-size:1.05rem}
+.hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:12px 28px;border-radius:12px;font-size:.9rem;font-weight:600;
+  text-decoration:none;display:inline-block;transition:all .2s;border:none;cursor:pointer;
+}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{filter:brightness(1.15)}
+.btn-outline{border:1px solid var(--border);color:var(--text);background:transparent}
+.btn-outline:hover{border-color:var(--primary)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:80px}
+@media(max-width:640px){.skills{grid-template-columns:1fr}}
+.skill-card{
+  background:rgba(30,41,59,.5);border:1px solid var(--border);border-radius:12px;
+  padding:24px;text-align:center;transition:border-color .3s;
+}
+.skill-card:hover{border-color:var(--primary)}
+.skill-card .icon{font-size:2rem;margin-bottom:8px}
+.skill-card h3{font-size:.95rem;margin-bottom:4px}
+.skill-card p{font-size:.8rem;color:var(--muted)}
+
+/* Section headers */
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.section-header h2{font-size:1.5rem}
+.section-header a{color:var(--primary);font-size:.85rem;text-decoration:none}
+.section-header a:hover{text-decoration:underline}
+
+/* Cards */
+.card{
+  border:1px solid var(--border);border-radius:12px;padding:24px;
+  transition:border-color .3s;cursor:pointer;
+}
+.card:hover{border-color:var(--primary)}
+.card + .card{margin-top:16px}
+.card h3{font-size:1.05rem;transition:color .3s}
+.card:hover h3{color:var(--primary)}
+.card .meta{display:flex;gap:8px;align-items:center;font-size:.8rem;color:var(--muted);margin-top:8px}
+.card p{color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{
+  font-size:.75rem;padding:4px 12px;border-radius:999px;
+  background:var(--card);color:#cbd5e1;
+}
+.card ul{list-style:none;margin-top:12px}
+.card ul li{font-size:.85rem;color:var(--muted);padding:2px 0}
+.card ul li::before{content:"▸ ";color:var(--primary)}
+
+/* About page */
+.about h1{font-size:2rem}
+.about section{margin-top:40px}
+.about section h2{font-size:1.25rem}
+.about p{color:var(--muted);margin-top:12px;line-height:1.7}
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
+.tech-item{border:1px solid var(--border);border-radius:8px;padding:12px}
+.tech-item .name{font-size:.85rem;font-weight:600}
+.tech-item .desc{font-size:.75rem;color:var(--muted);margin-top:4px}
+.ai-list{margin-top:16px}
+.ai-item{border-left:3px solid var(--primary);padding-left:16px;margin-bottom:16px}
+.ai-item h3{font-size:.95rem}
+.ai-item p{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+/* Blog detail page */
+.blog-article header{margin-bottom:40px}
+.blog-article .content p{color:#cbd5e1;margin-bottom:16px;line-height:1.8;font-size:.95rem}
+.blog-article footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+
+/* Page title */
+.page-title{margin-bottom:8px;font-size:2rem}
+.page-subtitle{color:var(--muted);margin-bottom:40px}
+
+/* Footer */
+footer{
+  border-top:1px solid var(--border);padding:32px;text-align:center;
+  color:var(--muted);font-size:.85rem
+}
+footer .love{color:var(--primary)}
+
+/* Summary */
+.summary-bar{
+  margin-top:48px;padding:16px 24px;
+  background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(124,58,237,.1));
+  border-radius:12px;text-align:center;
+  border:1px solid rgba(37,99,235,.2);
+}
+
+/* Hide pages by default */
+.page{display:none}
+.page.active{display:block}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#/" class="logo">&lt;AI Dev /&gt;</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#/" data-page="home">首页</a>
+      <a href="#/projects" data-page="projects">项目</a>
+      <a href="#/blog" data-page="blog">博客</a>
+      <a href="#/about" data-page="about">关于</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- ===== 首页 ===== -->
+  <div id="page-home" class="page active">
+    <div class="hero">
+      <p class="label">你好，我是</p>
+      <h1>大三软件工程学生<span class="gradient">&lt; AI 驱动开发者 /&gt;</span></h1>
+      <p>热爱用 AI 工具重构开发流程。这个网站就是我用 Codex AI 全程辅助搭建的——从架构设计到每一行代码。</p>
+      <div class="btns">
+        <a href="#/projects" class="btn btn-primary">查看项目 →</a>
+        <a href="#/about" class="btn btn-outline">关于我</a>
+      </div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <div class="icon">🤖</div>
+        <h3>AI 工作流</h3>
+        <p>用 Codex 完成从需求到部署的全流程开发</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">⚡</div>
+        <h3>全栈能力</h3>
+        <p>Next.js + React + TypeScript + Tailwind</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🎯</div>
+        <h3>面试准备</h3>
+        <p>LeetCode 200+ / 系统设计 / AI 工具链</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>精选项目</h2>
+      <a href="#/projects">查看全部 →</a>
+    </div>
+    <div id="home-projects"></div>
+
+    <div class="section-header" style="margin-top:48px">
+      <h2>最新文章</h2>
+      <a href="#/blog">查看全部 →</a>
+    </div>
+    <div id="home-blog"></div>
+  </div>
+
+  <!-- ===== 项目页 ===== -->
+  <div id="page-projects" class="page">
+    <h1 class="page-title">项目</h1>
+    <p class="page-subtitle">每个项目都使用 AI 工具辅助开发，体现了「人机协作」的现代开发模式。</p>
+    <div id="projects-list"></div>
+  </div>
+
+  <!-- ===== 博客列表页 ===== -->
+  <div id="page-blog" class="page">
+    <h1 class="page-title">博客</h1>
+    <p class="page-subtitle">记录 AI 工具使用心得、开发实践和实习准备经验。</p>
+    <div id="blog-list"></div>
+  </div>
+
+  <!-- ===== 博客详情页 ===== -->
+  <div id="page-blog-detail" class="page">
+    <div id="blog-detail-content"></div>
+  </div>
+
+  <!-- ===== 关于页 ===== -->
+  <div id="page-about" class="page">
+    <div class="about">
+      <h1>关于我</h1>
+      <section>
+        <h2>👋 简介</h2>
+        <p>我是一名大三软件工程学生，正在积极准备 2026 年秋招实习。我的独特优势是 <strong style="color:var(--primary)">将 AI 工具深度融入日常开发流程</strong>，不仅能写代码，更懂得如何用 AI 十倍提升开发效率。</p>
+      </section>
+      <section>
+        <h2>🛠️ 技术栈</h2>
+        <div class="tech-grid">
+          <div class="tech-item"><div class="name">Next.js / React</div><div class="desc">前端框架</div></div>
+          <div class="tech-item"><div class="name">TypeScript</div><div class="desc">类型安全</div></div>
+          <div class="tech-item"><div class="name">Tailwind CSS</div><div class="desc">样式系统</div></div>
+          <div class="tech-item"><div class="name">Node.js</div><div class="desc">后端开发</div></div>
+          <div class="tech-item"><div class="name">Codex AI</div><div class="desc">AI 辅助开发</div></div>
+          <div class="tech-item"><div class="name">Git / CI/CD</div><div class="desc">版本控制与部署</div></div>
+        </div>
+      </section>
+      <section>
+        <h2>🤖 AI 工具链实践</h2>
+        <div class="ai-list">
+          <div class="ai-item"><h3>Codex 全流程开发</h3><p>用 Codex 完成本作品集网站的搭建，从需求到部署全程 AI 辅助</p></div>
+          <div class="ai-item"><h3>Skills 自定义工作流</h3><p>创建专属 Skill 模板，一键启动 LeetCode 刷题 / 项目周报等任务</p></div>
+          <div class="ai-item"><h3>AGENTS.md 项目管理</h3><p>在项目中配置 AGENTS.md，让 AI 自动遵循代码规范和项目约定</p></div>
+          <div class="ai-item"><h3>多插件协同</h3><p>使用 @browser @documents @spreadsheets 等插件实现全链路提效</p></div>
+        </div>
+      </section>
+      <section>
+        <h2>🎯 实习目标</h2>
+        <p>寻找一份能充分发挥 AI 工具能力的软件工程实习岗位。我希望能在一个重视技术创新的团队中，用 AI 提效能力为项目带来实实在在的价值。</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Built with <span class="love">❤️</span> using Next.js &amp; Codex AI</p>
+  <p style="margin-top:4px">© 2026 · AI-Assisted Portfolio</p>
+</footer>
+
+<script>
+// ===== Data =====
+const projects = [
+  { slug:"ai-portfolio", title:"AI-Assisted 作品集", desc:"本网站！使用 Codex AI 全程辅助完成从架构设计、组件开发、测试到部署的全流程开发。", tech:["Next.js 14","Tailwind CSS 4","Codex AI","TypeScript"], highlights:["100% AI 辅助完成代码生成","建立「人提需求→AI 生成→人工审查」协作流","集成 AI 写作模块自动生成技术博客","包含单元测试与 CI/CD 部署流水线"] },
+  { slug:"ai-interview-sim", title:"AI 面试模拟舱", desc:"交互式面试模拟平台，Codex 扮演面试官实时出题、评分并生成能力雷达图。", tech:["React","WebSocket","Codex API","Chart.js"], highlights:["AI 动态生成面试题（八股文+场景题+算法）","实时语音/文字作答评分","可视化能力雷达图反馈"] },
+  { slug:"code-quality", title:"AI 代码质量看板", desc:"连接 GitHub 仓库，利用 Codex 自动分析 PR 代码质量，生成趋势报告与重构建议。", tech:["Node.js","GitHub API","Codex","ECharts"], highlights:["500+ 次提交的代码质量分析","自动检测代码异味与复杂度","团队代码规范率提升 40%"] }
+]
+
+const posts = [
+  { slug:"ai-workflow", title:"如何用 AI 重构你的开发工作流", date:"2026-05-30", excerpt:"分享我在日常开发中如何利用 Codex AI 进行需求分析、代码生成、调试优化和文档编写的实践经验。", tags:["AI","工作流","Codex"] },
+  { slug:"codex-tips", title:"大三学生必备的 Codex 使用技巧", date:"2026-05-28", excerpt:"作为一个正在准备实习的大三学生，我总结了 10 个能让你在面试中脱颖而出的 Codex 高级用法。", tags:["Codex","实习","面试"] },
+  { slug:"building-with-ai", title:"从 0 到 1：用 AI 搭建一个完整项目", date:"2026-05-25", excerpt:"手把手记录我用 Codex 搭建这个作品集网站的完整过程，包括遇到的坑和解决方法。", tags:["Next.js","Codex","项目实战"] }
+]
+
+const blogContent = {
+  "ai-workflow": [
+    "在过去，一个完整的开发流程通常需要开发者独立完成需求分析、技术选型、编码、测试、部署和文档编写。每个环节都需要大量的时间和精力投入。随着 AI 辅助开发工具的成熟，这个流程正在被彻底重塑。",
+    "我使用 Codex 作为我的 AI 编程伙伴，建立了如下的开发工作流：",
+    "第一步，需求分析阶段。我会向 Codex 描述我想要实现的功能，让它帮我梳理技术方案和架构设计。比如建立这个作品集时，我直接告诉 Codex「我想搭建一个 Next.js 个人作品集网站，需要首页、项目展示、博客和关于我四个页面」，它会自动生成项目结构和路由设计。",
+    "第二步，编码实现阶段。每个组件我都会先描述功能，让 Codex 生成初始代码，然后我进行审查和优化。这种「人机协作」模式让我能把更多精力放在架构设计和代码质量上，而不是重复性的模板代码。",
+    "第三步，测试与质量保障。Codex 可以帮我生成单元测试和集成测试，覆盖边界情况。我只需要描述测试场景，它就能给出完整的测试代码。",
+    "第四步，文档与部署。最后，让 Codex 自动生成 README、API 文档，甚至帮我配置 CI/CD 流水线。",
+    "这套工作流的核心不是让 AI 替代开发者，而是让开发者从重复劳动中解放出来，专注于更有创造性的工作。"
+  ],
+  "codex-tips": [
+    "作为一个正在准备实习的大三学生，我深度使用 Codex 已经有一段时间了。以下是我认为最有价值的 5 个高级用法：",
+    "1. 用 AGENTS.md 建立项目规范。在项目根目录放一个 AGENTS.md 文件，Codex 会自动读取并遵循其中的规则。比如你可以规定代码风格、测试覆盖要求、提交信息格式等。",
+    "2. 用 Skills 创建可复用的工作流。把你常用的任务封装成 Skill，以后一个指令就能启动完整的工作流。比如我创建了一个「LeetCode 刷题」Skill，每次使用时 Codex 会自动帮我分析题目、给出多种解法思路。",
+    "3. 用 @browser 插件实现自动化测试。Codex 可以控制浏览器进行 UI 测试、数据抓取等操作。面试时你可以说「我利用 AI 实现了自动化 E2E 测试」。",
+    "4. 把 Codex 当面试搭子。让 Codex 扮演面试官，模拟真实面试场景。你可以说「请用 STAR 法则评价我的回答」「请出三道不同难度的算法题」。",
+    "5. 用 Plans 模式展示结构化思维。对于复杂任务，先让 Codex 用 Plans 模式制定执行计划，再逐步实现。这本身就能体现你的系统设计能力。"
+  ],
+  "building-with-ai": [
+    "这个作品集网站的搭建过程，完整记录了我如何使用 Codex 完成从 0 到 1 的全流程开发。",
+    "第一阶段：项目初始化。我告诉 Codex「用 Next.js 14 + App Router + Tailwind CSS 搭建项目结构」，它自动生成了 tsconfig、package.json 和基础布局。",
+    "第二阶段：页面开发。我逐步描述每个页面的需求，Codex 生成对应的组件代码。比如「创建一个深色主题的导航栏，支持响应式移动端菜单」「设计一个项目卡片组件，包含标题、描述、技术标签和亮点列表」。",
+    "第三阶段：内容填充。项目的项目介绍和博客文章数据都放在 data.ts 中，方便管理。博客内容本身也是 AI 辅助生成的。",
+    "第四阶段：测试与部署。编写了单元测试用例，并配置了 Vercel 部署。整个过程中，Codex 帮我处理了大量样板代码，让我能把精力集中在项目架构和体验优化上。",
+    "总结来说，用 AI 辅助开发不是偷懒，而是把效率工具用到极致。在简历上写出「熟练使用 AI 重构开发流程」，比写「熟悉 React」更有竞争力。"
+  ]
+}
+
+// ===== Render Functions =====
+function renderProjectCard(p) {
+  return '<div class="card">' +
+    '<h3>' + p.title + '</h3>' +
+    '<p>' + p.desc + '</p>' +
+    '<div class="tags">' + p.tech.map(t => '<span class="tag">' + t + '</span>').join('') + '</div>' +
+    '<ul>' + p.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>' +
+  '</div>'
+}
+
+function renderBlogCard(post) {
+  return '<div class="card" onclick="navigate(\'#/blog/' + post.slug + '\')">' +
+    '<div class="meta"><span>' + post.date + '</span><span>·</span>' +
+    post.tags.map(t => '<span class="tag">' + t + '</span>').join('') + '</div>' +
+    '<h3>' + post.title + '</h3>' +
+    '<p>' + post.excerpt + '</p>' +
+  '</div>'
+}
+
+function renderHome() {
+  document.getElementById('home-projects').innerHTML = projects.slice(0,2).map(renderProjectCard).join('')
+  document.getElementById('home-blog').innerHTML = posts.slice(0,2).map(renderBlogCard).join('')
+}
+
+function renderProjects() {
+  document.getElementById('projects-list').innerHTML = projects.map(renderProjectCard).join('')
+}
+
+function renderBlog() {
+  document.getElementById('blog-list').innerHTML = posts.map(p => renderBlogCard(p)).join('')
+}
+
+function renderBlogDetail(slug) {
+  const post = posts.find(p => p.slug === slug)
+  if (!post) { navigate('#/blog'); return }
+  const content = blogContent[slug] || ["文章正在生成中..."]
+  const el = document.getElementById('blog-detail-content')
+  el.innerHTML =
+    '<article class="blog-article">' +
+    '<header>' +
+    '<div class="meta"><span>' + post.date + '</span><span>·</span>' +
+    post.tags.map(t => '<span class="tag">' + t + '</span>').join('') + '</div>' +
+    '<h1 style="margin-top:16px;font-size:2rem">' + post.title + '</h1>' +
+    '<p style="color:var(--muted);margin-top:12px">' + post.excerpt + '</p>' +
+    '</header>' +
+    '<div class="content">' + content.map(p => '<p>' + p + '</p>').join('') + '</div>' +
+    '<footer>✍️ 本文由 AI 辅助生成 · 使用 Codex 完成内容创作与排版</footer>' +
+    '</article>' +
+    '<div class="section-header" style="margin-top:32px"><a href="#/blog">← 返回博客列表</a></div>'
+}
+
+// ===== Router =====
+function navigate(hash) {
+  window.location.hash = hash
+}
+
+function route() {
+  const hash = window.location.hash.slice(1) || '/'
+  const pages = ['home','projects','blog','about','blog-detail']
+  
+  // Hide all pages
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p)
+    if (el) el.classList.remove('active')
+  })
+
+  // Show correct page
+  if (hash.startsWith('/blog/')) {
+    const slug = hash.replace('/blog/', '')
+    document.getElementById('page-blog-detail').classList.add('active')
+    renderBlogDetail(slug)
+  } else {
+    const page = hash.replace('/', '') || 'home'
+    const el = document.getElementById('page-' + page)
+    if (el) {
+      el.classList.add('active')
+      if (page === 'home') renderHome()
+      if (page === 'projects') renderProjects()
+      if (page === 'blog') renderBlog()
+    } else {
+      document.getElementById('page-home').classList.add('active')
+      renderHome()
+    }
+  }
+
+  // Update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const p = a.dataset.page
+    const currentPage = hash.replace('/', '') || 'home'
+    a.classList.toggle('active', p === currentPage)
+  })
+
+  // Close mobile menu
+  document.getElementById('navLinks').classList.remove('open')
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open')
+}
+
+window.addEventListener('hashchange', route)
+
+// Initial render
+route()
+</script>
+</body>
+</html>
